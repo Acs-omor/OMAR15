@@ -1,77 +1,74 @@
-const moment = require('moment-timezone');
-const axios = require('axios');
+const moment = require("moment-timezone");
 
 module.exports = {
   config: {
     name: "info",
-    aliases: ["inf", "in4"],
-    version: "2.0",
-    author: "Eren",
-    countDown: 5,
+    version: "2.5.3",
+    author: "ST | Sheikh Tamim",
     role: 0,
+    countDown: 20,
     shortDescription: {
-      en: "Sends information about the bot and admin along with a video."
+      en: "Owner & bot information"
     },
     longDescription: {
-      en: "Sends information about the bot and admin along with a video."
+      en: "Show detailed information about the bot, owner, uptime and socials"
     },
-    category: "Information",
+    category: "owner",
     guide: {
       en: "{pn}"
     }
   },
 
   onStart: async function ({ message }) {
-    this.sendInfo(message);
-  },
 
-  onChat: async function ({ event, message }) {
-    if (event.body && event.body.toLowerCase() === "info") {
-      this.sendInfo(message);
-    }
-  },
+    const ownerName = "STARBOY APHELION";
+    const ownerAge = "N/A";
+    const ownerFB = "https://facebook.com/star.boy.aphelion";
+    const ownerNumber = "+88019XXXXXXX";
+    const status = "Active";
 
-  sendInfo: async function (message) {
-    const botName = "🕸️ 𝐒𝐩𝐢𝐝𝐞𝐘🕷️";
-    const authorName = "Evaan";
-    const authorFB = "fb.com/mahi68x";
-    const authorInsta = "raadx102";
-    const status = "𝗦𝗶𝗻𝗴𝗹𝗲";
+    const botName = global.GoatBot?.config?.nickNameBot || "GoatBot";
+    const prefix = global.GoatBot?.config?.prefix || "/";
 
-    const now = moment().tz('Asia/Dhaka');
-    const time = now.format('h:mm:ss A');
+    // 🧠 TOTAL COMMANDS
+    const totalCommands = global.GoatBot?.commands?.size || 0;
+
+    const images = [
+      "https://i.ibb.co/SD8SDxRp/597419756-1433777018750185-6513158348709492396-n-jpg-nc-cat-103-ccb-1-7-nc-sid-9f807c-nc-eui2-Ae-F.jpg"
+    ];
+    const image = images[Math.floor(Math.random() * images.length)];
+
+    const now = moment().tz("Asia/Dhaka");
+    const date = now.format("MMMM Do YYYY");
+    const time = now.format("h:mm:ss A");
 
     const uptime = process.uptime();
+    const days = Math.floor(uptime / 86400);
+    const hours = Math.floor((uptime % 86400) / 3600);
+    const minutes = Math.floor((uptime % 3600) / 60);
     const seconds = Math.floor(uptime % 60);
-    const minutes = Math.floor((uptime / 60) % 60);
-    const hours = Math.floor((uptime / (60 * 60)) % 24);
-    const uptimeString = `${hours}h ${minutes}m ${seconds}s`;
+    const uptimeString = `${days}d ${hours}h ${minutes}m ${seconds}s`;
 
-    const videoUrl = "https://files.catbox.moe/lphsv4.mp4";
+    return message.reply({
+      body: `
+╔═《 ✨ 𝗢𝗪𝗡𝗘𝗥 & 𝗕𝗢𝗧 𝗜𝗡𝗙𝗢 ✨ 》═╗
 
-    const body = `
+⭓ 🤖 𝗕𝗼𝘁 𝗡𝗮𝗺𝗲   : 『 ${botName} 』
+⭓ ☄️ 𝗣𝗿𝗲𝗳𝗶𝘅      : 『 ${prefix} 』
+⭓ 🧠 𝗖𝗼𝗺𝗺𝗮𝗻𝗱𝘀    : 『 ${totalCommands} 』
+⭓ ⚡ 𝗨𝗽𝘁𝗶𝗺𝗲      : 『 ${uptimeString} 』
+⭓ 🗓️ 𝗗𝗮𝘁𝗲        : 『 ${date} 』
+⭓ ⏰ 𝗧𝗶𝗺𝗲        : 『 ${time} 』
 
-┏━━━━━━━━━━━━━━━━┓
-┃ 🧑 Admin Info
-┃ ╰➤ Name: ${authorName}
-┃ ╰➤ Facebook: ${authorFB}
-┃ ╰➤ Instagram: ${authorInsta}
-┃ ╰➤ Status: ${status}
-┃
-┃ 🤖 Bot Details
-┃ ╰➤ Name: ${botName}
-┃ ╰➤ Time: ${time}
-┃ ╰➤ Uptime: ${uptimeString}
-┗━━━━━━━━━━━━━━━━┛
+⭓ 👑 𝗢𝘄𝗻𝗲𝗿      : 『 ${ownerName} 』
+⭓ 🎂 𝗔𝗴𝗲        : 『 ${ownerAge} 』
+⭓ ❤️ 𝗦𝘁𝗮𝘁𝘂𝘀     : 『 ${status} 』
+⭓ 📱 𝗪𝗵𝗮𝘁𝘀𝗔𝗽𝗽  : 『 ${ownerNumber} 』
+⭓ 🌐 𝗙𝗮𝗰𝗲𝗯𝗼𝗼𝗸  : 『 ${ownerFB} 』
 
-I may not be perfect,
-   but I’ll always reply to you.`;
-
-    const response = await axios.get(videoUrl, { responseType: 'stream' });
-
-    message.reply({
-      body,
-      attachment: response.data
+╚══════════════════════════╝
+`,
+      attachment: await global.utils.getStreamFromURL(image)
     });
   }
 };
