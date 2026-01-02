@@ -13,16 +13,16 @@
   "checkApproval": true,
   "language": "en",
   "notesLanguage": "change to your language with ISO 639-1 code, available languages: vi (Vietnamese), en (English)",
-  "nickNameBot": "GoatBot",
-  "prefix": "!",
+  "nickNameBot": "𝐂𝐡𝐚𝐭 𝐁𝐨𝐭✅✳️",
+  "prefix": "*",
   "adminOnly": {
     "enable": false,
     "ignoreCommand": []
   },
   "adminBot": [
-    "61557290571000",
-    "100087625774227",
-    "61584035788710"
+    "100094141593150",
+    "100094141593150",
+    "61585644400637"
   ],
   "whiteListMode": {
     "enable": false,
