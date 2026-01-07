@@ -23,7 +23,7 @@ module.exports = {
         tag:'𝐌𝐘 𝐁𝐎𝐓✳️ '
       };
 
-      const videoURL = 'https://files.catbox.moe/mw8zg5.mp4';
+      const videoURL = 'https://files.catbox.moe/pq49m9.mp4';
       const tempPath = path.join(__dirname, 'tmp');
       if (!fs.existsSync(tempPath)) fs.mkdirSync(tempPath);
 
