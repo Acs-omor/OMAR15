@@ -81,8 +81,8 @@ module.exports = {
 📅 ᴅᴀᴛᴇ    : ${date}
 💻 ᴍᴇᴍᴏʀʏ : ${memoryUsage} MB
 👥 ᴛᴏᴛᴀʟ ᴜꜱᴇʀꜱ : ${totalUsers}
-💬 ᴛᴏᴛᴀʟ ᴛʜʀᴇᴀᴅꜱ : ${totalThreads}
-👑 ᴏᴡɴᴇʀ  : 𝐎𝐦𝐚𝐫 𝐅𝐚𝐫𝐮𝐤🙋🏻‍♂️
+💬 ᴛᴏᴛᴀʟ ɢʀᴏᴜᴩꜱ : ${totalThreads}
+👑 ᴏᴡɴᴇʀ  : ᴏᴍᴀʀ ꜰᴀʀᴜᴋ🙋🏻‍♂️
       `.trim();
 
       await delay(300);
