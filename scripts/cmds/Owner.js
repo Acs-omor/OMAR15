@@ -16,7 +16,7 @@ module.exports = {
   onStart: async function ({ api, event }) {
     try {
       const ownerInfo = {
-        name:'𝐎𝐦𝐚𝐫 𝐅𝐚𝐫𝐮𝐤🙋🏻‍♂️',
+        name:'𝐎𝐦𝐚𝐫 𝐅𝐚𝐫𝐮𝐤',
         age: ' 𝟙𝟟+',
         nick:'𝐍𝐀𝐑𝐔𝐓𝐎☣️',
         gender:'𝐌𝐚𝐥𝐞 🚹',
