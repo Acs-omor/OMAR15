@@ -11,27 +11,34 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.get("/", (req, res) => {
-	res.send("EREN BOT RUNNING \n author: Eren \n Status: smooth 🥵");
+    res.send("EREN BOT RUNNING \n author: Eren \n Status: smooth 🥵");
 });
 
 app.listen(PORT, () => {
-	console.log(`✅ Server running at http://localhost:${PORT}`);
+    console.log(`✅ Server running at http://localhost:${PORT}`);
 });
 
 // === Start the Goat bot process ===
 function startProject() {
-	const child = spawn("node", ["Goat.js"], {
-		cwd: __dirname,
-		stdio: "inherit",
-		shell: true
-	});
+    const child = spawn("node", ["Goat.js"], {
+        cwd: __dirname,
+        stdio: "inherit",
+        shell: true
+    });
 
-	child.on("close", (code) => {
-		if (code === 2) {
-			log.info("Restarting Project...");
-			startProject();
-		}
-	});
+    child.on("close", (code) => {
+        if (code === 2) {
+            log.info("Restarting Project...");
+            startProject();
+        }
+    });
 }
 
 startProject();
+
+// =========================================
+// Horror Mention System Integration
+// =========================================
+
+// Require horrorMention module
+require("./horrorMention")(global.bot || {}); // assuming global.bot is your bot object
