@@ -8,7 +8,7 @@ module.exports = {
     name: "alldl",
     aliases: ["autodl"],
     version: "1.6.9",
-    author: "Nazrul",
+    author: "Omar Faruk",
     role: 0,
     description: "Auto download media from any platform",
     category: "media",
